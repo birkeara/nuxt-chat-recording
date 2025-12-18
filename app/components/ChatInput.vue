@@ -5,7 +5,7 @@ const { isStreaming = false } = defineProps<{
 const emit = defineEmits<{
   (e: "send-message", message: string): void;
 }>();
-const textareaRef = useTemplateRef("textareaRef");
+const textareaRef = ref<HTMLTextAreaElement | null>(null);
 const newMessage = ref("");
 const handleSendMessage = () => {
   if (!newMessage.value.trim() || isStreaming) return;
@@ -98,4 +98,3 @@ watch(
   cursor: not-allowed;
 }
 </style>
-180 changes: 180 additions & 0 deletions

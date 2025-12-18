@@ -1,13 +1,13 @@
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-  const { message } = body;
+  const { messages } = body;
 
-  const id = message.length.toString();
-  const lastMessage = message[message.length - 1];
+  const id = messages.length.toString();
+  const lastMessage = messages[messages.length - 1];
 
   return {
     id,
     role: "assistant",
-    reply: `(server) You said: "${lastMessage.content}"`,
+    content: `(server) You said: ${lastMessage.content}`,
   };
 });
